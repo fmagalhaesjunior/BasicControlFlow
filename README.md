@@ -1,4 +1,4 @@
-# 📦 MyApp - Cadastro de Produtos e Clientes
+# 📦 BasicControlFlow - Cadastro de Produtos e Clientes
 
 Sistema ASP.NET Core com API RESTful, Razor Pages, SQL Server, Entity Framework Core e CI/CD com Azure DevOps.  
 Este projeto é parte de um desafio prático de desenvolvimento de sistemas.
@@ -22,10 +22,10 @@ Este projeto é parte de um desafio prático de desenvolvimento de sistemas.
 
 ```
 /src
-  ├── MyApp.Domain
-  ├── MyApp.Application
-  ├── MyApp.Infrastructure
-  └── MyApp.Web
+  ├── BasicControlFlow.Domain
+  ├── BasicControlFlow.Application
+  ├── BasicControlFlow.Infrastructure
+  └── BasicControlFlow.Web
 /docker-compose.yml
 /Dockerfile
 /azure-pipelines.yml
@@ -86,7 +86,7 @@ Arquivo de configuração: [`azure-pipelines.yml`](./azure-pipelines.yml)
    ```
 3. Rode migrations localmente (caso necessário):
    ```bash
-   dotnet ef database update -p src/MyApp.Infrastructure -s src/MyApp.Web
+   dotnet ef database update -p src/BasicControlFlow.Infrastructure -s src/BasicControlFlow.Web
    ```
 4. Crie novas features em branches a partir de `main` ou `release02`
 
