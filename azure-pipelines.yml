@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+      - release02
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  outputDir: '$(Build.ArtifactStagingDirectory)/drop'
+
+steps:
+
+# 1. Checkout do código
+- task: Checkout@1
+  displayName: '📥 Checkout do código'
+
+# 2. Setup .NET
+- task: UseDotNet@2
+  displayName: '🧰 Instalar SDK .NET'
+  inputs:
+    packageType: 'sdk'
+    version: '9.x'
+
+# 3. Restore
+- script: dotnet restore
+  displayName: '📦 Restore dos pacotes'
+
+# 4. Build
+- script: dotnet build --no-restore --configuration $(buildConfiguration)
+  displayName: '🔧 Build da aplicação'
+
+# 5. Testes
+- script: dotnet test --no-build --configuration $(buildConfiguration)
+  displayName: '✅ Executar Testes Automatizados'
+
+# 6. Publish da API para pasta de saída
+- script: dotnet publish src/BasicControlFlow.Web/BasicControlFlow.Web.csproj -c $(buildConfiguration) -o $(outputDir)
+  displayName: '📤 Publicar API para pasta $(outputDir)'
+
+# 7. Salvar artefato (simulação de deploy)
+- task: PublishBuildArtifacts@1
+  displayName: '📦 Publicar artefato de build'
+  inputs:
+    PathtoPublish: '$(outputDir)'
+    ArtifactName: 'api-drop'
+    publishLocation: 'Container'

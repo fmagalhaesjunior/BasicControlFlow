@@ -1,0 +1,27 @@
+﻿@page
+@model BasicControlFlow.Web.Pages.Customers.IndexModel
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-page="/Customers/Create" class="btn btn-primary mb-3">Novo Cliente</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
