@@ -132,4 +132,4 @@ SELECT * FROM vw_ResumoClientes;
 
 ## 📬 Contato
 
-Caso tenha dúvidas ou sugestões, entre em contato por [email@exemplo.com].
+Caso tenha dúvidas ou sugestões, entre em contato por fmbj13@gmail.com.
